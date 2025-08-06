@@ -1,0 +1,54 @@
+gengtype.o: ../../../src/gcc-6.2.0/gcc/gengtype.c config.h auto-host.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/gcc/system.h \
+ ../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h \
+ ../../../src/gcc-6.2.0/gcc/../include/filenames.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/gcc/../include/libiberty.h \
+ ../../../src/gcc-6.2.0/gcc/hwint.h ../../../src/gcc-6.2.0/gcc/errors.h \
+ ../../../src/gcc-6.2.0/gcc/../include/getopt.h \
+ ../../../src/gcc-6.2.0/gcc/version.h \
+ ../../../src/gcc-6.2.0/gcc/../include/xregex.h \
+ ../../../src/gcc-6.2.0/gcc/../include/xregex2.h \
+ ../../../src/gcc-6.2.0/gcc/../include/obstack.h \
+ ../../../src/gcc-6.2.0/gcc/gengtype.h ../../../src/gcc-6.2.0/gcc/rtl.def \
+ ../../../src/gcc-6.2.0/gcc/insn-notes.def
+
+config.h:
+
+auto-host.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/gcc/system.h:
+
+../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h:
+
+../../../src/gcc-6.2.0/gcc/../include/filenames.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/gcc/../include/libiberty.h:
+
+../../../src/gcc-6.2.0/gcc/hwint.h:
+
+../../../src/gcc-6.2.0/gcc/errors.h:
+
+../../../src/gcc-6.2.0/gcc/../include/getopt.h:
+
+../../../src/gcc-6.2.0/gcc/version.h:
+
+../../../src/gcc-6.2.0/gcc/../include/xregex.h:
+
+../../../src/gcc-6.2.0/gcc/../include/xregex2.h:
+
+../../../src/gcc-6.2.0/gcc/../include/obstack.h:
+
+../../../src/gcc-6.2.0/gcc/gengtype.h:
+
+../../../src/gcc-6.2.0/gcc/rtl.def:
+
+../../../src/gcc-6.2.0/gcc/insn-notes.def:

@@ -1,0 +1,32 @@
+unwind-c.o: ../../../../src/gcc-6.2.0/libgcc/unwind-c.c \
+ ../.././gcc/tconfig.h ../.././gcc/auto-host.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/tsystem.h \
+ /home/pintos/setup/build/gcc/gcc/include/stddef.h \
+ /home/pintos/setup/build/gcc/gcc/include/float.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/filenames.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/hashtab.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h unwind.h \
+ ../../../../src/gcc-6.2.0/libgcc/unwind-pe.h
+
+../.././gcc/tconfig.h:
+
+../.././gcc/auto-host.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/tsystem.h:
+
+/home/pintos/setup/build/gcc/gcc/include/stddef.h:
+
+/home/pintos/setup/build/gcc/gcc/include/float.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/filenames.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/hashtab.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h:
+
+unwind.h:
+
+../../../../src/gcc-6.2.0/libgcc/unwind-pe.h:

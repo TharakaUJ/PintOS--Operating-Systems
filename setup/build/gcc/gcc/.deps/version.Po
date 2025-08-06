@@ -1,0 +1,4 @@
+version.o: ../../../src/gcc-6.2.0/gcc/version.c \
+ ../../../src/gcc-6.2.0/gcc/version.h
+
+../../../src/gcc-6.2.0/gcc/version.h:

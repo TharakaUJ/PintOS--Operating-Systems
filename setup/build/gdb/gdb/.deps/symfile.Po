@@ -1,0 +1,351 @@
+symfile.o: ../../../src/gdb-7.12.1/gdb/symfile.c \
+ ../../../src/gdb-7.12.1/gdb/defs.h \
+ ../../../src/gdb-7.12.1/gdb/common/common-defs.h config.h \
+ build-gnulib/config.h build-gnulib/import/stdio.h \
+ build-gnulib/import/stdlib.h build-gnulib/import/string.h \
+ ../../../src/gdb-7.12.1/gdb/../include/ansidecl.h \
+ ../../../src/gdb-7.12.1/gdb/../include/libiberty.h \
+ ../../../src/gdb-7.12.1/gdb/../include/ansidecl.h \
+ ../../../src/gdb-7.12.1/gdb/gnulib/import/pathmax.h \
+ build-gnulib/import/unistd.h \
+ ../../../src/gdb-7.12.1/gdb/../include/gdb/signals.h \
+ ../../../src/gdb-7.12.1/gdb/../include/gdb/signals.def \
+ ../../../src/gdb-7.12.1/gdb/common/gdb_locale.h \
+ ../../../src/gdb-7.12.1/gdb/common/ptid.h \
+ ../../../src/gdb-7.12.1/gdb/common/common-types.h ../bfd/bfd.h \
+ ../../../src/gdb-7.12.1/gdb/../include/symcat.h \
+ build-gnulib/import/sys/stat.h \
+ ../../../src/gdb-7.12.1/gdb/common/common-utils.h \
+ ../../../src/gdb-7.12.1/gdb/common/gdb_assert.h \
+ ../../../src/gdb-7.12.1/gdb/common/errors.h \
+ ../../../src/gdb-7.12.1/gdb/common/print-utils.h \
+ ../../../src/gdb-7.12.1/gdb/common/common-debug.h \
+ ../../../src/gdb-7.12.1/gdb/common/cleanups.h \
+ ../../../src/gdb-7.12.1/gdb/common/common-exceptions.h \
+ ../../../src/gdb-7.12.1/gdb/gdb_wchar.h build-gnulib/import/wchar.h \
+ build-gnulib/import/wctype.h ../../../src/gdb-7.12.1/gdb/ui-file.h \
+ ../../../src/gdb-7.12.1/gdb/common/host-defs.h \
+ ../../../src/gdb-7.12.1/gdb/common/enum-flags.h \
+ ../../../src/gdb-7.12.1/gdb/../include/hashtab.h \
+ ../../../src/gdb-7.12.1/gdb/../include/fopen-bin.h \
+ ../../../src/gdb-7.12.1/gdb/gdbarch.h \
+ ../../../src/gdb-7.12.1/gdb/frame.h \
+ ../../../src/gdb-7.12.1/gdb/language.h \
+ ../../../src/gdb-7.12.1/gdb/symtab.h \
+ ../../../src/gdb-7.12.1/gdb/common/vec.h \
+ ../../../src/gdb-7.12.1/gdb/common/gdb_vecs.h \
+ ../../../src/gdb-7.12.1/gdb/common/vec.h \
+ ../../../src/gdb-7.12.1/gdb/gdbtypes.h \
+ ../../../src/gdb-7.12.1/gdb/minsyms.h \
+ ../../../src/gdb-7.12.1/gdb/unwind_stop_reasons.def \
+ ../../../src/gdb-7.12.1/gdb/regcache.h \
+ ../../../src/gdb-7.12.1/gdb/common/common-regcache.h \
+ ../../../src/gdb-7.12.1/gdb/utils.h \
+ ../../../src/gdb-7.12.1/gdb/exceptions.h \
+ ../../../src/gdb-7.12.1/gdb/ui-out.h \
+ ../../../src/gdb-7.12.1/gdb/arch-utils.h \
+ ../../../src/gdb-7.12.1/gdb/../include/bfdlink.h \
+ ../../../src/gdb-7.12.1/gdb/gdbcore.h ../../../src/gdb-7.12.1/gdb/exec.h \
+ ../../../src/gdb-7.12.1/gdb/target.h \
+ ../../../src/gdb-7.12.1/gdb/infrun.h \
+ ../../../src/gdb-7.12.1/gdb/breakpoint.h \
+ ../../../src/gdb-7.12.1/gdb/value.h \
+ ../../../src/gdb-7.12.1/gdb/doublest.h \
+ ../../../src/gdb-7.12.1/gdb/../include/floatformat.h \
+ ../../../src/gdb-7.12.1/gdb/expression.h \
+ ../../../src/gdb-7.12.1/gdb/std-operator.def \
+ ../../../src/gdb-7.12.1/gdb/ada-operator.def \
+ ../../../src/gdb-7.12.1/gdb/ax.h \
+ ../../../src/gdb-7.12.1/gdb/common/ax.def \
+ ../../../src/gdb-7.12.1/gdb/command.h \
+ ../../../src/gdb-7.12.1/gdb/common/break-common.h \
+ ../../../src/gdb-7.12.1/gdb/probe.h \
+ ../../../src/gdb-7.12.1/gdb/target/target.h \
+ ../../../src/gdb-7.12.1/gdb/target/waitstatus.h \
+ ../../../src/gdb-7.12.1/gdb/common/gdb_signals.h \
+ ../../../src/gdb-7.12.1/gdb/target/resume.h \
+ ../../../src/gdb-7.12.1/gdb/target/wait.h \
+ ../../../src/gdb-7.12.1/gdb/target/waitstatus.h \
+ ../../../src/gdb-7.12.1/gdb/memattr.h \
+ ../../../src/gdb-7.12.1/gdb/btrace.h \
+ ../../../src/gdb-7.12.1/gdb/common/btrace-common.h \
+ ../../../src/gdb-7.12.1/gdb/progspace.h \
+ ../../../src/gdb-7.12.1/gdb/registry.h \
+ ../../../src/gdb-7.12.1/gdb/memrange.h \
+ ../../../src/gdb-7.12.1/gdb/symfile.h \
+ ../../../src/gdb-7.12.1/gdb/objfiles.h \
+ ../../../src/gdb-7.12.1/gdb/gdb_obstack.h \
+ ../../../src/gdb-7.12.1/gdb/../include/obstack.h \
+ ../../../src/gdb-7.12.1/gdb/gdb_bfd.h \
+ ../../../src/gdb-7.12.1/gdb/source.h \
+ ../../../src/gdb-7.12.1/gdb/gdbcmd.h \
+ ../../../src/gdb-7.12.1/gdb/complaints.h \
+ ../../../src/gdb-7.12.1/gdb/../include/demangle.h \
+ ../../../src/gdb-7.12.1/gdb/../include/libiberty.h \
+ ../../../src/gdb-7.12.1/gdb/inferior.h \
+ ../../../src/gdb-7.12.1/gdb/../include/filenames.h \
+ ../../../src/gdb-7.12.1/gdb/../include/hashtab.h \
+ ../../../src/gdb-7.12.1/gdb/gdb-stabs.h \
+ ../../../src/gdb-7.12.1/gdb/completer.h \
+ ../../../src/gdb-7.12.1/gdb/bcache.h \
+ ../../../src/gdb-7.12.1/gdb/../opcodes/../readline/readline.h \
+ ../../../src/gdb-7.12.1/gdb/../opcodes/../readline/rlstdc.h \
+ ../../../src/gdb-7.12.1/gdb/../opcodes/../readline/rltypedefs.h \
+ ../../../src/gdb-7.12.1/gdb/../opcodes/../readline/keymaps.h \
+ ../../../src/gdb-7.12.1/gdb/../opcodes/../readline/chardefs.h \
+ ../../../src/gdb-7.12.1/gdb/../opcodes/../readline/tilde.h \
+ ../../../src/gdb-7.12.1/gdb/block.h \
+ ../../../src/gdb-7.12.1/gdb/dictionary.h observer.h \
+ ../../../src/gdb-7.12.1/gdb/parser-defs.h \
+ ../../../src/gdb-7.12.1/gdb/varobj.h \
+ ../../../src/gdb-7.12.1/gdb/../bfd/elf-bfd.h \
+ ../../../src/gdb-7.12.1/gdb/../include/elf/common.h \
+ ../../../src/gdb-7.12.1/gdb/../include/elf/external.h \
+ ../../../src/gdb-7.12.1/gdb/../include/elf/internal.h \
+ ../../../src/gdb-7.12.1/gdb/solib.h ../../../src/gdb-7.12.1/gdb/remote.h \
+ ../../../src/gdb-7.12.1/gdb/remote-notif.h \
+ ../../../src/gdb-7.12.1/gdb/common/queue.h \
+ ../../../src/gdb-7.12.1/gdb/stack.h \
+ ../../../src/gdb-7.12.1/gdb/cli/cli-utils.h \
+ ../../../src/gdb-7.12.1/gdb/common/gdb_sys_time.h \
+ build-gnulib/import/sys/time.h ../../../src/gdb-7.12.1/gdb/psymtab.h
+
+../../../src/gdb-7.12.1/gdb/defs.h:
+
+../../../src/gdb-7.12.1/gdb/common/common-defs.h:
+
+config.h:
+
+build-gnulib/config.h:
+
+build-gnulib/import/stdio.h:
+
+build-gnulib/import/stdlib.h:
+
+build-gnulib/import/string.h:
+
+../../../src/gdb-7.12.1/gdb/../include/ansidecl.h:
+
+../../../src/gdb-7.12.1/gdb/../include/libiberty.h:
+
+../../../src/gdb-7.12.1/gdb/../include/ansidecl.h:
+
+../../../src/gdb-7.12.1/gdb/gnulib/import/pathmax.h:
+
+build-gnulib/import/unistd.h:
+
+../../../src/gdb-7.12.1/gdb/../include/gdb/signals.h:
+
+../../../src/gdb-7.12.1/gdb/../include/gdb/signals.def:
+
+../../../src/gdb-7.12.1/gdb/common/gdb_locale.h:
+
+../../../src/gdb-7.12.1/gdb/common/ptid.h:
+
+../../../src/gdb-7.12.1/gdb/common/common-types.h:
+
+../bfd/bfd.h:
+
+../../../src/gdb-7.12.1/gdb/../include/symcat.h:
+
+build-gnulib/import/sys/stat.h:
+
+../../../src/gdb-7.12.1/gdb/common/common-utils.h:
+
+../../../src/gdb-7.12.1/gdb/common/gdb_assert.h:
+
+../../../src/gdb-7.12.1/gdb/common/errors.h:
+
+../../../src/gdb-7.12.1/gdb/common/print-utils.h:
+
+../../../src/gdb-7.12.1/gdb/common/common-debug.h:
+
+../../../src/gdb-7.12.1/gdb/common/cleanups.h:
+
+../../../src/gdb-7.12.1/gdb/common/common-exceptions.h:
+
+../../../src/gdb-7.12.1/gdb/gdb_wchar.h:
+
+build-gnulib/import/wchar.h:
+
+build-gnulib/import/wctype.h:
+
+../../../src/gdb-7.12.1/gdb/ui-file.h:
+
+../../../src/gdb-7.12.1/gdb/common/host-defs.h:
+
+../../../src/gdb-7.12.1/gdb/common/enum-flags.h:
+
+../../../src/gdb-7.12.1/gdb/../include/hashtab.h:
+
+../../../src/gdb-7.12.1/gdb/../include/fopen-bin.h:
+
+../../../src/gdb-7.12.1/gdb/gdbarch.h:
+
+../../../src/gdb-7.12.1/gdb/frame.h:
+
+../../../src/gdb-7.12.1/gdb/language.h:
+
+../../../src/gdb-7.12.1/gdb/symtab.h:
+
+../../../src/gdb-7.12.1/gdb/common/vec.h:
+
+../../../src/gdb-7.12.1/gdb/common/gdb_vecs.h:
+
+../../../src/gdb-7.12.1/gdb/common/vec.h:
+
+../../../src/gdb-7.12.1/gdb/gdbtypes.h:
+
+../../../src/gdb-7.12.1/gdb/minsyms.h:
+
+../../../src/gdb-7.12.1/gdb/unwind_stop_reasons.def:
+
+../../../src/gdb-7.12.1/gdb/regcache.h:
+
+../../../src/gdb-7.12.1/gdb/common/common-regcache.h:
+
+../../../src/gdb-7.12.1/gdb/utils.h:
+
+../../../src/gdb-7.12.1/gdb/exceptions.h:
+
+../../../src/gdb-7.12.1/gdb/ui-out.h:
+
+../../../src/gdb-7.12.1/gdb/arch-utils.h:
+
+../../../src/gdb-7.12.1/gdb/../include/bfdlink.h:
+
+../../../src/gdb-7.12.1/gdb/gdbcore.h:
+
+../../../src/gdb-7.12.1/gdb/exec.h:
+
+../../../src/gdb-7.12.1/gdb/target.h:
+
+../../../src/gdb-7.12.1/gdb/infrun.h:
+
+../../../src/gdb-7.12.1/gdb/breakpoint.h:
+
+../../../src/gdb-7.12.1/gdb/value.h:
+
+../../../src/gdb-7.12.1/gdb/doublest.h:
+
+../../../src/gdb-7.12.1/gdb/../include/floatformat.h:
+
+../../../src/gdb-7.12.1/gdb/expression.h:
+
+../../../src/gdb-7.12.1/gdb/std-operator.def:
+
+../../../src/gdb-7.12.1/gdb/ada-operator.def:
+
+../../../src/gdb-7.12.1/gdb/ax.h:
+
+../../../src/gdb-7.12.1/gdb/common/ax.def:
+
+../../../src/gdb-7.12.1/gdb/command.h:
+
+../../../src/gdb-7.12.1/gdb/common/break-common.h:
+
+../../../src/gdb-7.12.1/gdb/probe.h:
+
+../../../src/gdb-7.12.1/gdb/target/target.h:
+
+../../../src/gdb-7.12.1/gdb/target/waitstatus.h:
+
+../../../src/gdb-7.12.1/gdb/common/gdb_signals.h:
+
+../../../src/gdb-7.12.1/gdb/target/resume.h:
+
+../../../src/gdb-7.12.1/gdb/target/wait.h:
+
+../../../src/gdb-7.12.1/gdb/target/waitstatus.h:
+
+../../../src/gdb-7.12.1/gdb/memattr.h:
+
+../../../src/gdb-7.12.1/gdb/btrace.h:
+
+../../../src/gdb-7.12.1/gdb/common/btrace-common.h:
+
+../../../src/gdb-7.12.1/gdb/progspace.h:
+
+../../../src/gdb-7.12.1/gdb/registry.h:
+
+../../../src/gdb-7.12.1/gdb/memrange.h:
+
+../../../src/gdb-7.12.1/gdb/symfile.h:
+
+../../../src/gdb-7.12.1/gdb/objfiles.h:
+
+../../../src/gdb-7.12.1/gdb/gdb_obstack.h:
+
+../../../src/gdb-7.12.1/gdb/../include/obstack.h:
+
+../../../src/gdb-7.12.1/gdb/gdb_bfd.h:
+
+../../../src/gdb-7.12.1/gdb/source.h:
+
+../../../src/gdb-7.12.1/gdb/gdbcmd.h:
+
+../../../src/gdb-7.12.1/gdb/complaints.h:
+
+../../../src/gdb-7.12.1/gdb/../include/demangle.h:
+
+../../../src/gdb-7.12.1/gdb/../include/libiberty.h:
+
+../../../src/gdb-7.12.1/gdb/inferior.h:
+
+../../../src/gdb-7.12.1/gdb/../include/filenames.h:
+
+../../../src/gdb-7.12.1/gdb/../include/hashtab.h:
+
+../../../src/gdb-7.12.1/gdb/gdb-stabs.h:
+
+../../../src/gdb-7.12.1/gdb/completer.h:
+
+../../../src/gdb-7.12.1/gdb/bcache.h:
+
+../../../src/gdb-7.12.1/gdb/../opcodes/../readline/readline.h:
+
+../../../src/gdb-7.12.1/gdb/../opcodes/../readline/rlstdc.h:
+
+../../../src/gdb-7.12.1/gdb/../opcodes/../readline/rltypedefs.h:
+
+../../../src/gdb-7.12.1/gdb/../opcodes/../readline/keymaps.h:
+
+../../../src/gdb-7.12.1/gdb/../opcodes/../readline/chardefs.h:
+
+../../../src/gdb-7.12.1/gdb/../opcodes/../readline/tilde.h:
+
+../../../src/gdb-7.12.1/gdb/block.h:
+
+../../../src/gdb-7.12.1/gdb/dictionary.h:
+
+observer.h:
+
+../../../src/gdb-7.12.1/gdb/parser-defs.h:
+
+../../../src/gdb-7.12.1/gdb/varobj.h:
+
+../../../src/gdb-7.12.1/gdb/../bfd/elf-bfd.h:
+
+../../../src/gdb-7.12.1/gdb/../include/elf/common.h:
+
+../../../src/gdb-7.12.1/gdb/../include/elf/external.h:
+
+../../../src/gdb-7.12.1/gdb/../include/elf/internal.h:
+
+../../../src/gdb-7.12.1/gdb/solib.h:
+
+../../../src/gdb-7.12.1/gdb/remote.h:
+
+../../../src/gdb-7.12.1/gdb/remote-notif.h:
+
+../../../src/gdb-7.12.1/gdb/common/queue.h:
+
+../../../src/gdb-7.12.1/gdb/stack.h:
+
+../../../src/gdb-7.12.1/gdb/cli/cli-utils.h:
+
+../../../src/gdb-7.12.1/gdb/common/gdb_sys_time.h:
+
+build-gnulib/import/sys/time.h:
+
+../../../src/gdb-7.12.1/gdb/psymtab.h:

@@ -1,0 +1,27 @@
+symtab.o: ../../../src/gcc-6.2.0/libcpp/symtab.c config.h \
+ ../../../src/gcc-6.2.0/libcpp/system.h \
+ ../../../src/gcc-6.2.0/libcpp/../include/filenames.h \
+ ../../../src/gcc-6.2.0/libcpp/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/libcpp/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/libcpp/../include/libiberty.h \
+ ../../../src/gcc-6.2.0/libcpp/../include/safe-ctype.h \
+ ../../../src/gcc-6.2.0/libcpp/include/symtab.h \
+ ../../../src/gcc-6.2.0/libcpp/../include/obstack.h
+
+config.h:
+
+../../../src/gcc-6.2.0/libcpp/system.h:
+
+../../../src/gcc-6.2.0/libcpp/../include/filenames.h:
+
+../../../src/gcc-6.2.0/libcpp/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/libcpp/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/libcpp/../include/libiberty.h:
+
+../../../src/gcc-6.2.0/libcpp/../include/safe-ctype.h:
+
+../../../src/gcc-6.2.0/libcpp/include/symtab.h:
+
+../../../src/gcc-6.2.0/libcpp/../include/obstack.h:

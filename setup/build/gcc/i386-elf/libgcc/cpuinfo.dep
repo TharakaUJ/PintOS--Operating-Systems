@@ -1,0 +1,24 @@
+cpuinfo.o: ../../../../src/gcc-6.2.0/libgcc/config/i386/cpuinfo.c \
+ /home/pintos/setup/build/gcc/gcc/include/cpuid.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/tsystem.h \
+ /home/pintos/setup/build/gcc/gcc/include/stddef.h \
+ /home/pintos/setup/build/gcc/gcc/include/float.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/filenames.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/hashtab.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h auto-target.h
+
+/home/pintos/setup/build/gcc/gcc/include/cpuid.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/tsystem.h:
+
+/home/pintos/setup/build/gcc/gcc/include/stddef.h:
+
+/home/pintos/setup/build/gcc/gcc/include/float.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/filenames.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/hashtab.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h:
+
+auto-target.h:

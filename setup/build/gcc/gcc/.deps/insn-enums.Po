@@ -1,0 +1,34 @@
+insn-enums.o: insn-enums.c config.h auto-host.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/gcc/system.h \
+ ../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h \
+ ../../../src/gcc-6.2.0/gcc/../include/filenames.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ /home/pintos/setup/build/gcc/./gmp/gmp.h \
+ ../../../src/gcc-6.2.0/gcc/../include/libiberty.h \
+ ../../../src/gcc-6.2.0/gcc/hwint.h insn-constants.h
+
+config.h:
+
+auto-host.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/gcc/system.h:
+
+../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h:
+
+../../../src/gcc-6.2.0/gcc/../include/filenames.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+/home/pintos/setup/build/gcc/./gmp/gmp.h:
+
+../../../src/gcc-6.2.0/gcc/../include/libiberty.h:
+
+../../../src/gcc-6.2.0/gcc/hwint.h:
+
+insn-constants.h:

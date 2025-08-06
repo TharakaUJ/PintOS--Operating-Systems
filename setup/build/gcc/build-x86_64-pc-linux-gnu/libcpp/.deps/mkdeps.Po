@@ -1,0 +1,24 @@
+mkdeps.o: ../../../../src/gcc-6.2.0/libcpp/mkdeps.c config.h \
+ ../../../../src/gcc-6.2.0/libcpp/system.h \
+ ../../../../src/gcc-6.2.0/libcpp/../include/filenames.h \
+ ../../../../src/gcc-6.2.0/libcpp/../include/hashtab.h \
+ ../../../../src/gcc-6.2.0/libcpp/../include/ansidecl.h \
+ ../../../../src/gcc-6.2.0/libcpp/../include/libiberty.h \
+ ../../../../src/gcc-6.2.0/libcpp/../include/safe-ctype.h \
+ ../../../../src/gcc-6.2.0/libcpp/include/mkdeps.h
+
+config.h:
+
+../../../../src/gcc-6.2.0/libcpp/system.h:
+
+../../../../src/gcc-6.2.0/libcpp/../include/filenames.h:
+
+../../../../src/gcc-6.2.0/libcpp/../include/hashtab.h:
+
+../../../../src/gcc-6.2.0/libcpp/../include/ansidecl.h:
+
+../../../../src/gcc-6.2.0/libcpp/../include/libiberty.h:
+
+../../../../src/gcc-6.2.0/libcpp/../include/safe-ctype.h:
+
+../../../../src/gcc-6.2.0/libcpp/include/mkdeps.h:

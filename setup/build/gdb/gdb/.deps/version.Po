@@ -1,0 +1,3 @@
+version.o: version.c ../../../src/gdb-7.12.1/gdb/common/version.h
+
+../../../src/gdb-7.12.1/gdb/common/version.h:

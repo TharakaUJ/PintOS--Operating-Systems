@@ -1,0 +1,96 @@
+_gcov.o: ../../../../src/gcc-6.2.0/libgcc/libgcov-driver.c \
+ ../../../../src/gcc-6.2.0/libgcc/libgcov.h ../.././gcc/tconfig.h \
+ ../.././gcc/auto-host.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/tsystem.h \
+ /home/pintos/setup/build/gcc/gcc/include/stddef.h \
+ /home/pintos/setup/build/gcc/gcc/include/float.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/filenames.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/hashtab.h \
+ ../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/coretypes.h ../.././gcc/tm.h \
+ ../.././gcc/options.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/flag-types.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/i386-opts.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/stringop.def \
+ ../.././gcc/insn-constants.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/vxworks-dummy.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/i386.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/x86-tune.def \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/unix.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/att.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/dbxelf.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/elfos.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/newlib-stdint.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/i386elf.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/config/initfini-array.h \
+ ../.././gcc/insn-modes.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/defaults.h libgcc_tm.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/gcov-io.h ../.././gcc/gcov-iov.h \
+ ../../../../src/gcc-6.2.0/libgcc/../gcc/gcov-counter.def
+
+../../../../src/gcc-6.2.0/libgcc/libgcov.h:
+
+../.././gcc/tconfig.h:
+
+../.././gcc/auto-host.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/tsystem.h:
+
+/home/pintos/setup/build/gcc/gcc/include/stddef.h:
+
+/home/pintos/setup/build/gcc/gcc/include/float.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/filenames.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/hashtab.h:
+
+../../../../src/gcc-6.2.0/libgcc/../include/ansidecl.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/coretypes.h:
+
+../.././gcc/tm.h:
+
+../.././gcc/options.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/flag-types.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/i386-opts.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/stringop.def:
+
+../.././gcc/insn-constants.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/vxworks-dummy.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/i386.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/x86-tune.def:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/unix.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/att.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/dbxelf.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/elfos.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/newlib-stdint.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/i386/i386elf.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/config/initfini-array.h:
+
+../.././gcc/insn-modes.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/defaults.h:
+
+libgcc_tm.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/gcov-io.h:
+
+../.././gcc/gcov-iov.h:
+
+../../../../src/gcc-6.2.0/libgcc/../gcc/gcov-counter.def:

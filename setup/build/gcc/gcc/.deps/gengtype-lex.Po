@@ -1,0 +1,33 @@
+gengtype-lex.o: ../../../src/gcc-6.2.0/gcc/gengtype-lex.c bconfig.h \
+ auto-host.h ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h config.h \
+ ../../../src/gcc-6.2.0/gcc/system.h \
+ ../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h \
+ ../../../src/gcc-6.2.0/gcc/../include/filenames.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/gcc/../include/libiberty.h \
+ ../../../src/gcc-6.2.0/gcc/hwint.h ../../../src/gcc-6.2.0/gcc/gengtype.h
+
+bconfig.h:
+
+auto-host.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+config.h:
+
+../../../src/gcc-6.2.0/gcc/system.h:
+
+../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h:
+
+../../../src/gcc-6.2.0/gcc/../include/filenames.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/gcc/../include/libiberty.h:
+
+../../../src/gcc-6.2.0/gcc/hwint.h:
+
+../../../src/gcc-6.2.0/gcc/gengtype.h:

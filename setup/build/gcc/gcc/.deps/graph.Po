@@ -1,0 +1,221 @@
+graph.o: ../../../src/gcc-6.2.0/gcc/graph.c config.h auto-host.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/gcc/system.h \
+ ../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h \
+ ../../../src/gcc-6.2.0/gcc/../include/filenames.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ /home/pintos/setup/build/gcc/./gmp/gmp.h \
+ ../../../src/gcc-6.2.0/gcc/../include/libiberty.h \
+ ../../../src/gcc-6.2.0/gcc/hwint.h \
+ ../../../src/gcc-6.2.0/gcc/coretypes.h \
+ ../../../src/gcc-6.2.0/gcc/machmode.h insn-modes.h \
+ ../../../src/gcc-6.2.0/gcc/mode-classes.def \
+ ../../../src/gcc-6.2.0/gcc/signop.h \
+ ../../../src/gcc-6.2.0/gcc/wide-int.h \
+ ../../../src/gcc-6.2.0/gcc/double-int.h \
+ ../../../src/gcc-6.2.0/gcc/real.h \
+ ../../../src/gcc-6.2.0/gcc/fixed-value.h \
+ ../../../src/gcc-6.2.0/gcc/hash-table.h \
+ ../../../src/gcc-6.2.0/gcc/statistics.h ../../../src/gcc-6.2.0/gcc/ggc.h \
+ gtype-desc.h ../../../src/gcc-6.2.0/gcc/vec.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/inchash.h \
+ ../../../src/gcc-6.2.0/gcc/mem-stats-traits.h \
+ ../../../src/gcc-6.2.0/gcc/hash-traits.h \
+ ../../../src/gcc-6.2.0/gcc/hash-map-traits.h \
+ ../../../src/gcc-6.2.0/gcc/mem-stats.h \
+ ../../../src/gcc-6.2.0/gcc/hash-map.h \
+ ../../../src/gcc-6.2.0/gcc/hash-set.h ../../../src/gcc-6.2.0/gcc/input.h \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h \
+ ../../../src/gcc-6.2.0/gcc/is-a.h \
+ ../../../src/gcc-6.2.0/gcc/memory-block.h \
+ ../../../src/gcc-6.2.0/gcc/backend.h tm.h options.h \
+ ../../../src/gcc-6.2.0/gcc/flag-types.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/i386-opts.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/stringop.def insn-constants.h \
+ ../../../src/gcc-6.2.0/gcc/config/vxworks-dummy.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/i386.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/x86-tune.def \
+ ../../../src/gcc-6.2.0/gcc/config/i386/unix.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/att.h \
+ ../../../src/gcc-6.2.0/gcc/config/dbxelf.h \
+ ../../../src/gcc-6.2.0/gcc/config/elfos.h \
+ ../../../src/gcc-6.2.0/gcc/config/newlib-stdint.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/i386elf.h \
+ ../../../src/gcc-6.2.0/gcc/config/initfini-array.h insn-flags.h \
+ insn-modes.h ../../../src/gcc-6.2.0/gcc/defaults.h \
+ ../../../src/gcc-6.2.0/gcc/function.h \
+ ../../../src/gcc-6.2.0/gcc/bitmap.h \
+ ../../../src/gcc-6.2.0/gcc/../include/obstack.h \
+ ../../../src/gcc-6.2.0/gcc/sbitmap.h \
+ ../../../src/gcc-6.2.0/gcc/basic-block.h \
+ ../../../src/gcc-6.2.0/gcc/cfg-flags.def \
+ ../../../src/gcc-6.2.0/gcc/cfg.h ../../../src/gcc-6.2.0/gcc/dominance.h \
+ ../../../src/gcc-6.2.0/gcc/cfghooks.h \
+ ../../../src/gcc-6.2.0/gcc/predict.h \
+ ../../../src/gcc-6.2.0/gcc/predict.def \
+ ../../../src/gcc-6.2.0/gcc/pretty-print.h \
+ ../../../src/gcc-6.2.0/gcc/wide-int-print.h \
+ ../../../src/gcc-6.2.0/gcc/diagnostic-core.h bversion.h \
+ ../../../src/gcc-6.2.0/gcc/diagnostic.def \
+ ../../../src/gcc-6.2.0/gcc/cfganal.h \
+ ../../../src/gcc-6.2.0/gcc/cfgloop.h \
+ ../../../src/gcc-6.2.0/gcc/cfgloopmanip.h \
+ ../../../src/gcc-6.2.0/gcc/graph.h ../../../src/gcc-6.2.0/gcc/dumpfile.h
+
+config.h:
+
+auto-host.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/gcc/system.h:
+
+../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h:
+
+../../../src/gcc-6.2.0/gcc/../include/filenames.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+/home/pintos/setup/build/gcc/./gmp/gmp.h:
+
+../../../src/gcc-6.2.0/gcc/../include/libiberty.h:
+
+../../../src/gcc-6.2.0/gcc/hwint.h:
+
+../../../src/gcc-6.2.0/gcc/coretypes.h:
+
+../../../src/gcc-6.2.0/gcc/machmode.h:
+
+insn-modes.h:
+
+../../../src/gcc-6.2.0/gcc/mode-classes.def:
+
+../../../src/gcc-6.2.0/gcc/signop.h:
+
+../../../src/gcc-6.2.0/gcc/wide-int.h:
+
+../../../src/gcc-6.2.0/gcc/double-int.h:
+
+../../../src/gcc-6.2.0/gcc/real.h:
+
+../../../src/gcc-6.2.0/gcc/fixed-value.h:
+
+../../../src/gcc-6.2.0/gcc/hash-table.h:
+
+../../../src/gcc-6.2.0/gcc/statistics.h:
+
+../../../src/gcc-6.2.0/gcc/ggc.h:
+
+gtype-desc.h:
+
+../../../src/gcc-6.2.0/gcc/vec.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/inchash.h:
+
+../../../src/gcc-6.2.0/gcc/mem-stats-traits.h:
+
+../../../src/gcc-6.2.0/gcc/hash-traits.h:
+
+../../../src/gcc-6.2.0/gcc/hash-map-traits.h:
+
+../../../src/gcc-6.2.0/gcc/mem-stats.h:
+
+../../../src/gcc-6.2.0/gcc/hash-map.h:
+
+../../../src/gcc-6.2.0/gcc/hash-set.h:
+
+../../../src/gcc-6.2.0/gcc/input.h:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h:
+
+../../../src/gcc-6.2.0/gcc/is-a.h:
+
+../../../src/gcc-6.2.0/gcc/memory-block.h:
+
+../../../src/gcc-6.2.0/gcc/backend.h:
+
+tm.h:
+
+options.h:
+
+../../../src/gcc-6.2.0/gcc/flag-types.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/i386-opts.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/stringop.def:
+
+insn-constants.h:
+
+../../../src/gcc-6.2.0/gcc/config/vxworks-dummy.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/i386.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/x86-tune.def:
+
+../../../src/gcc-6.2.0/gcc/config/i386/unix.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/att.h:
+
+../../../src/gcc-6.2.0/gcc/config/dbxelf.h:
+
+../../../src/gcc-6.2.0/gcc/config/elfos.h:
+
+../../../src/gcc-6.2.0/gcc/config/newlib-stdint.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/i386elf.h:
+
+../../../src/gcc-6.2.0/gcc/config/initfini-array.h:
+
+insn-flags.h:
+
+insn-modes.h:
+
+../../../src/gcc-6.2.0/gcc/defaults.h:
+
+../../../src/gcc-6.2.0/gcc/function.h:
+
+../../../src/gcc-6.2.0/gcc/bitmap.h:
+
+../../../src/gcc-6.2.0/gcc/../include/obstack.h:
+
+../../../src/gcc-6.2.0/gcc/sbitmap.h:
+
+../../../src/gcc-6.2.0/gcc/basic-block.h:
+
+../../../src/gcc-6.2.0/gcc/cfg-flags.def:
+
+../../../src/gcc-6.2.0/gcc/cfg.h:
+
+../../../src/gcc-6.2.0/gcc/dominance.h:
+
+../../../src/gcc-6.2.0/gcc/cfghooks.h:
+
+../../../src/gcc-6.2.0/gcc/predict.h:
+
+../../../src/gcc-6.2.0/gcc/predict.def:
+
+../../../src/gcc-6.2.0/gcc/pretty-print.h:
+
+../../../src/gcc-6.2.0/gcc/wide-int-print.h:
+
+../../../src/gcc-6.2.0/gcc/diagnostic-core.h:
+
+bversion.h:
+
+../../../src/gcc-6.2.0/gcc/diagnostic.def:
+
+../../../src/gcc-6.2.0/gcc/cfganal.h:
+
+../../../src/gcc-6.2.0/gcc/cfgloop.h:
+
+../../../src/gcc-6.2.0/gcc/cfgloopmanip.h:
+
+../../../src/gcc-6.2.0/gcc/graph.h:
+
+../../../src/gcc-6.2.0/gcc/dumpfile.h:

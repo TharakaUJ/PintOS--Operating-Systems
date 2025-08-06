@@ -1,0 +1,109 @@
+wide-int-print.o: ../../../src/gcc-6.2.0/gcc/wide-int-print.cc config.h \
+ auto-host.h ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/gcc/system.h \
+ ../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h \
+ ../../../src/gcc-6.2.0/gcc/../include/filenames.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ /home/pintos/setup/build/gcc/./gmp/gmp.h \
+ ../../../src/gcc-6.2.0/gcc/../include/libiberty.h \
+ ../../../src/gcc-6.2.0/gcc/hwint.h \
+ ../../../src/gcc-6.2.0/gcc/coretypes.h \
+ ../../../src/gcc-6.2.0/gcc/machmode.h insn-modes.h \
+ ../../../src/gcc-6.2.0/gcc/mode-classes.def \
+ ../../../src/gcc-6.2.0/gcc/signop.h \
+ ../../../src/gcc-6.2.0/gcc/wide-int.h \
+ ../../../src/gcc-6.2.0/gcc/double-int.h \
+ ../../../src/gcc-6.2.0/gcc/real.h \
+ ../../../src/gcc-6.2.0/gcc/fixed-value.h \
+ ../../../src/gcc-6.2.0/gcc/hash-table.h \
+ ../../../src/gcc-6.2.0/gcc/statistics.h ../../../src/gcc-6.2.0/gcc/ggc.h \
+ gtype-desc.h ../../../src/gcc-6.2.0/gcc/vec.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/inchash.h \
+ ../../../src/gcc-6.2.0/gcc/mem-stats-traits.h \
+ ../../../src/gcc-6.2.0/gcc/hash-traits.h \
+ ../../../src/gcc-6.2.0/gcc/hash-map-traits.h \
+ ../../../src/gcc-6.2.0/gcc/mem-stats.h \
+ ../../../src/gcc-6.2.0/gcc/hash-map.h \
+ ../../../src/gcc-6.2.0/gcc/hash-set.h ../../../src/gcc-6.2.0/gcc/input.h \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h \
+ ../../../src/gcc-6.2.0/gcc/is-a.h \
+ ../../../src/gcc-6.2.0/gcc/memory-block.h \
+ ../../../src/gcc-6.2.0/gcc/wide-int-print.h
+
+config.h:
+
+auto-host.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/gcc/system.h:
+
+../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h:
+
+../../../src/gcc-6.2.0/gcc/../include/filenames.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+/home/pintos/setup/build/gcc/./gmp/gmp.h:
+
+../../../src/gcc-6.2.0/gcc/../include/libiberty.h:
+
+../../../src/gcc-6.2.0/gcc/hwint.h:
+
+../../../src/gcc-6.2.0/gcc/coretypes.h:
+
+../../../src/gcc-6.2.0/gcc/machmode.h:
+
+insn-modes.h:
+
+../../../src/gcc-6.2.0/gcc/mode-classes.def:
+
+../../../src/gcc-6.2.0/gcc/signop.h:
+
+../../../src/gcc-6.2.0/gcc/wide-int.h:
+
+../../../src/gcc-6.2.0/gcc/double-int.h:
+
+../../../src/gcc-6.2.0/gcc/real.h:
+
+../../../src/gcc-6.2.0/gcc/fixed-value.h:
+
+../../../src/gcc-6.2.0/gcc/hash-table.h:
+
+../../../src/gcc-6.2.0/gcc/statistics.h:
+
+../../../src/gcc-6.2.0/gcc/ggc.h:
+
+gtype-desc.h:
+
+../../../src/gcc-6.2.0/gcc/vec.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/inchash.h:
+
+../../../src/gcc-6.2.0/gcc/mem-stats-traits.h:
+
+../../../src/gcc-6.2.0/gcc/hash-traits.h:
+
+../../../src/gcc-6.2.0/gcc/hash-map-traits.h:
+
+../../../src/gcc-6.2.0/gcc/mem-stats.h:
+
+../../../src/gcc-6.2.0/gcc/hash-map.h:
+
+../../../src/gcc-6.2.0/gcc/hash-set.h:
+
+../../../src/gcc-6.2.0/gcc/input.h:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h:
+
+../../../src/gcc-6.2.0/gcc/is-a.h:
+
+../../../src/gcc-6.2.0/gcc/memory-block.h:
+
+../../../src/gcc-6.2.0/gcc/wide-int-print.h:

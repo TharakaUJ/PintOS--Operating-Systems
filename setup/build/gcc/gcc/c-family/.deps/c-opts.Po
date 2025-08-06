@@ -1,0 +1,320 @@
+c-family/c-opts.o: ../../../src/gcc-6.2.0/gcc/c-family/c-opts.c config.h \
+ auto-host.h ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ ../../../src/gcc-6.2.0/gcc/system.h \
+ ../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h \
+ ../../../src/gcc-6.2.0/gcc/../include/filenames.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/../include/ansidecl.h \
+ /home/pintos/setup/build/gcc/./gmp/gmp.h \
+ ../../../src/gcc-6.2.0/gcc/../include/libiberty.h \
+ ../../../src/gcc-6.2.0/gcc/hwint.h \
+ ../../../src/gcc-6.2.0/gcc/coretypes.h \
+ ../../../src/gcc-6.2.0/gcc/machmode.h insn-modes.h \
+ ../../../src/gcc-6.2.0/gcc/mode-classes.def \
+ ../../../src/gcc-6.2.0/gcc/signop.h \
+ ../../../src/gcc-6.2.0/gcc/wide-int.h \
+ ../../../src/gcc-6.2.0/gcc/double-int.h \
+ ../../../src/gcc-6.2.0/gcc/real.h \
+ ../../../src/gcc-6.2.0/gcc/fixed-value.h \
+ ../../../src/gcc-6.2.0/gcc/hash-table.h \
+ ../../../src/gcc-6.2.0/gcc/statistics.h ../../../src/gcc-6.2.0/gcc/ggc.h \
+ gtype-desc.h ../../../src/gcc-6.2.0/gcc/vec.h \
+ ../../../src/gcc-6.2.0/gcc/../include/hashtab.h \
+ ../../../src/gcc-6.2.0/gcc/inchash.h \
+ ../../../src/gcc-6.2.0/gcc/mem-stats-traits.h \
+ ../../../src/gcc-6.2.0/gcc/hash-traits.h \
+ ../../../src/gcc-6.2.0/gcc/hash-map-traits.h \
+ ../../../src/gcc-6.2.0/gcc/mem-stats.h \
+ ../../../src/gcc-6.2.0/gcc/hash-map.h \
+ ../../../src/gcc-6.2.0/gcc/hash-set.h ../../../src/gcc-6.2.0/gcc/input.h \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h \
+ ../../../src/gcc-6.2.0/gcc/is-a.h \
+ ../../../src/gcc-6.2.0/gcc/memory-block.h tm.h options.h \
+ ../../../src/gcc-6.2.0/gcc/flag-types.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/i386-opts.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/stringop.def insn-constants.h \
+ ../../../src/gcc-6.2.0/gcc/config/vxworks-dummy.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/i386.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/x86-tune.def \
+ ../../../src/gcc-6.2.0/gcc/config/i386/unix.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/att.h \
+ ../../../src/gcc-6.2.0/gcc/config/dbxelf.h \
+ ../../../src/gcc-6.2.0/gcc/config/elfos.h \
+ ../../../src/gcc-6.2.0/gcc/config/newlib-stdint.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/i386elf.h \
+ ../../../src/gcc-6.2.0/gcc/config/initfini-array.h insn-flags.h \
+ insn-modes.h ../../../src/gcc-6.2.0/gcc/defaults.h \
+ ../../../src/gcc-6.2.0/gcc/c-family/c-target.h \
+ ../../../src/gcc-6.2.0/gcc/c-family/c-target.def \
+ ../../../src/gcc-6.2.0/gcc/target-hooks-macros.h \
+ ../../../src/gcc-6.2.0/gcc/c-family/c-common.h \
+ ../../../src/gcc-6.2.0/gcc/../include/splay-tree.h \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/cpplib.h \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/symtab.h \
+ ../../../src/gcc-6.2.0/gcc/../include/obstack.h \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h \
+ ../../../src/gcc-6.2.0/gcc/alias.h ../../../src/gcc-6.2.0/gcc/tree.h \
+ ../../../src/gcc-6.2.0/gcc/tree-core.h \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/symtab.h all-tree.def \
+ ../../../src/gcc-6.2.0/gcc/tree.def \
+ ../../../src/gcc-6.2.0/gcc/c-family/c-common.def \
+ ../../../src/gcc-6.2.0/gcc/ada/gcc-interface/ada-tree.def \
+ ../../../src/gcc-6.2.0/gcc/cp/cp-tree.def \
+ ../../../src/gcc-6.2.0/gcc/java/java-tree.def \
+ ../../../src/gcc-6.2.0/gcc/objc/objc-tree.def \
+ ../../../src/gcc-6.2.0/gcc/builtins.def \
+ ../../../src/gcc-6.2.0/gcc/sync-builtins.def \
+ ../../../src/gcc-6.2.0/gcc/omp-builtins.def \
+ ../../../src/gcc-6.2.0/gcc/cilk-builtins.def \
+ ../../../src/gcc-6.2.0/gcc/gtm-builtins.def \
+ ../../../src/gcc-6.2.0/gcc/sanitizer.def \
+ ../../../src/gcc-6.2.0/gcc/cilkplus.def \
+ ../../../src/gcc-6.2.0/gcc/chkp-builtins.def \
+ ../../../src/gcc-6.2.0/gcc/internal-fn.def \
+ ../../../src/gcc-6.2.0/gcc/treestruct.def tree-check.h \
+ ../../../src/gcc-6.2.0/gcc/fold-const.h \
+ ../../../src/gcc-6.2.0/gcc/diagnostic-core.h bversion.h \
+ ../../../src/gcc-6.2.0/gcc/diagnostic.def tm_p.h \
+ ../../../src/gcc-6.2.0/gcc/config/i386/i386-protos.h tm-preds.h \
+ ../../../src/gcc-6.2.0/gcc/diagnostic.h \
+ ../../../src/gcc-6.2.0/gcc/pretty-print.h \
+ ../../../src/gcc-6.2.0/gcc/wide-int-print.h \
+ ../../../src/gcc-6.2.0/gcc/diagnostic-core.h \
+ ../../../src/gcc-6.2.0/gcc/c-family/c-pragma.h \
+ ../../../src/gcc-6.2.0/gcc/flags.h ../../../src/gcc-6.2.0/gcc/toplev.h \
+ ../../../src/gcc-6.2.0/gcc/langhooks.h \
+ ../../../src/gcc-6.2.0/gcc/tree-diagnostic.h \
+ ../../../src/gcc-6.2.0/gcc/intl.h \
+ ../../../src/gcc-6.2.0/gcc/cppdefault.h \
+ ../../../src/gcc-6.2.0/gcc/incpath.h ../../../src/gcc-6.2.0/gcc/debug.h \
+ ../../../src/gcc-6.2.0/gcc/opts.h ../../../src/gcc-6.2.0/gcc/plugin.h \
+ ../../../src/gcc-6.2.0/gcc/highlev-plugin-common.h \
+ ../../../src/gcc-6.2.0/gcc/plugin.def \
+ ../../../src/gcc-6.2.0/gcc/../libcpp/include/mkdeps.h \
+ ../../../src/gcc-6.2.0/gcc/dumpfile.h
+
+config.h:
+
+auto-host.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+../../../src/gcc-6.2.0/gcc/system.h:
+
+../../../src/gcc-6.2.0/gcc/../include/safe-ctype.h:
+
+../../../src/gcc-6.2.0/gcc/../include/filenames.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/../include/ansidecl.h:
+
+/home/pintos/setup/build/gcc/./gmp/gmp.h:
+
+../../../src/gcc-6.2.0/gcc/../include/libiberty.h:
+
+../../../src/gcc-6.2.0/gcc/hwint.h:
+
+../../../src/gcc-6.2.0/gcc/coretypes.h:
+
+../../../src/gcc-6.2.0/gcc/machmode.h:
+
+insn-modes.h:
+
+../../../src/gcc-6.2.0/gcc/mode-classes.def:
+
+../../../src/gcc-6.2.0/gcc/signop.h:
+
+../../../src/gcc-6.2.0/gcc/wide-int.h:
+
+../../../src/gcc-6.2.0/gcc/double-int.h:
+
+../../../src/gcc-6.2.0/gcc/real.h:
+
+../../../src/gcc-6.2.0/gcc/fixed-value.h:
+
+../../../src/gcc-6.2.0/gcc/hash-table.h:
+
+../../../src/gcc-6.2.0/gcc/statistics.h:
+
+../../../src/gcc-6.2.0/gcc/ggc.h:
+
+gtype-desc.h:
+
+../../../src/gcc-6.2.0/gcc/vec.h:
+
+../../../src/gcc-6.2.0/gcc/../include/hashtab.h:
+
+../../../src/gcc-6.2.0/gcc/inchash.h:
+
+../../../src/gcc-6.2.0/gcc/mem-stats-traits.h:
+
+../../../src/gcc-6.2.0/gcc/hash-traits.h:
+
+../../../src/gcc-6.2.0/gcc/hash-map-traits.h:
+
+../../../src/gcc-6.2.0/gcc/mem-stats.h:
+
+../../../src/gcc-6.2.0/gcc/hash-map.h:
+
+../../../src/gcc-6.2.0/gcc/hash-set.h:
+
+../../../src/gcc-6.2.0/gcc/input.h:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h:
+
+../../../src/gcc-6.2.0/gcc/is-a.h:
+
+../../../src/gcc-6.2.0/gcc/memory-block.h:
+
+tm.h:
+
+options.h:
+
+../../../src/gcc-6.2.0/gcc/flag-types.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/i386-opts.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/stringop.def:
+
+insn-constants.h:
+
+../../../src/gcc-6.2.0/gcc/config/vxworks-dummy.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/i386.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/x86-tune.def:
+
+../../../src/gcc-6.2.0/gcc/config/i386/unix.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/att.h:
+
+../../../src/gcc-6.2.0/gcc/config/dbxelf.h:
+
+../../../src/gcc-6.2.0/gcc/config/elfos.h:
+
+../../../src/gcc-6.2.0/gcc/config/newlib-stdint.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/i386elf.h:
+
+../../../src/gcc-6.2.0/gcc/config/initfini-array.h:
+
+insn-flags.h:
+
+insn-modes.h:
+
+../../../src/gcc-6.2.0/gcc/defaults.h:
+
+../../../src/gcc-6.2.0/gcc/c-family/c-target.h:
+
+../../../src/gcc-6.2.0/gcc/c-family/c-target.def:
+
+../../../src/gcc-6.2.0/gcc/target-hooks-macros.h:
+
+../../../src/gcc-6.2.0/gcc/c-family/c-common.h:
+
+../../../src/gcc-6.2.0/gcc/../include/splay-tree.h:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/cpplib.h:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/symtab.h:
+
+../../../src/gcc-6.2.0/gcc/../include/obstack.h:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/line-map.h:
+
+../../../src/gcc-6.2.0/gcc/alias.h:
+
+../../../src/gcc-6.2.0/gcc/tree.h:
+
+../../../src/gcc-6.2.0/gcc/tree-core.h:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/symtab.h:
+
+all-tree.def:
+
+../../../src/gcc-6.2.0/gcc/tree.def:
+
+../../../src/gcc-6.2.0/gcc/c-family/c-common.def:
+
+../../../src/gcc-6.2.0/gcc/ada/gcc-interface/ada-tree.def:
+
+../../../src/gcc-6.2.0/gcc/cp/cp-tree.def:
+
+../../../src/gcc-6.2.0/gcc/java/java-tree.def:
+
+../../../src/gcc-6.2.0/gcc/objc/objc-tree.def:
+
+../../../src/gcc-6.2.0/gcc/builtins.def:
+
+../../../src/gcc-6.2.0/gcc/sync-builtins.def:
+
+../../../src/gcc-6.2.0/gcc/omp-builtins.def:
+
+../../../src/gcc-6.2.0/gcc/cilk-builtins.def:
+
+../../../src/gcc-6.2.0/gcc/gtm-builtins.def:
+
+../../../src/gcc-6.2.0/gcc/sanitizer.def:
+
+../../../src/gcc-6.2.0/gcc/cilkplus.def:
+
+../../../src/gcc-6.2.0/gcc/chkp-builtins.def:
+
+../../../src/gcc-6.2.0/gcc/internal-fn.def:
+
+../../../src/gcc-6.2.0/gcc/treestruct.def:
+
+tree-check.h:
+
+../../../src/gcc-6.2.0/gcc/fold-const.h:
+
+../../../src/gcc-6.2.0/gcc/diagnostic-core.h:
+
+bversion.h:
+
+../../../src/gcc-6.2.0/gcc/diagnostic.def:
+
+tm_p.h:
+
+../../../src/gcc-6.2.0/gcc/config/i386/i386-protos.h:
+
+tm-preds.h:
+
+../../../src/gcc-6.2.0/gcc/diagnostic.h:
+
+../../../src/gcc-6.2.0/gcc/pretty-print.h:
+
+../../../src/gcc-6.2.0/gcc/wide-int-print.h:
+
+../../../src/gcc-6.2.0/gcc/diagnostic-core.h:
+
+../../../src/gcc-6.2.0/gcc/c-family/c-pragma.h:
+
+../../../src/gcc-6.2.0/gcc/flags.h:
+
+../../../src/gcc-6.2.0/gcc/toplev.h:
+
+../../../src/gcc-6.2.0/gcc/langhooks.h:
+
+../../../src/gcc-6.2.0/gcc/tree-diagnostic.h:
+
+../../../src/gcc-6.2.0/gcc/intl.h:
+
+../../../src/gcc-6.2.0/gcc/cppdefault.h:
+
+../../../src/gcc-6.2.0/gcc/incpath.h:
+
+../../../src/gcc-6.2.0/gcc/debug.h:
+
+../../../src/gcc-6.2.0/gcc/opts.h:
+
+../../../src/gcc-6.2.0/gcc/plugin.h:
+
+../../../src/gcc-6.2.0/gcc/highlev-plugin-common.h:
+
+../../../src/gcc-6.2.0/gcc/plugin.def:
+
+../../../src/gcc-6.2.0/gcc/../libcpp/include/mkdeps.h:
+
+../../../src/gcc-6.2.0/gcc/dumpfile.h:
