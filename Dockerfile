@@ -13,7 +13,7 @@ RUN apt-get update && \
 
 
 
-RUN export PATH=/home/tharaka/setup/x86_64/bin:$PATH
+RUN export PATH=/home/pintos/setup/x86_64/bin:$PATH
 
 # Set working directory
 WORKDIR /home/pintos
