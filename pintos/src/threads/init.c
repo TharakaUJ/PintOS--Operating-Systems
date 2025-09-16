@@ -144,66 +144,72 @@ int pintos_init(void)
     {
       char command[255];
       int i = 0;
+      printf("Mora>> ");
 
       while (i < 255)
       {
         uint8_t key = input_getc();
-        putchar(key);
+        // putchar(key);
         if (key == '\n' || key == '\r')
         {
           command[i] = '\0';
           printf("\n");
           i = 0;
-        }
-        else
-        {
-          command[i++] = key;
-          continue;
-        }
-
-        if (strcmp(command, "help") == 0)
-        {
-          printf("Available commands:\n");
-          printf("  help     - Show this help\n");
-          printf("  shutdown - Exit Pintos\n");
-        }
-        else if (strcmp(command, "whoami") == 0)
-        {
-          printf("Hi! Tharaka 278M is the last digits\n");
-        }
-        else if (strcmp(command, "time") == 0)
-        {
-          printf("Current time: %ld seconds since the Epoch\n", rtc_get_time());
-        }
-        else if (strcmp(command, "ram") == 0)
-        {
-          printf("Total RAM: %u kB\n", init_ram_pages * PGSIZE / 1024);
-        }
-        else if (strcmp(command, "thread") == 0)
-        {
-          printf("Current thread: %s (tid=%d)\n", thread_current()->name, thread_current()->tid);
-        }
-        else if (strcmp(command, "priority") == 0)
-        {
-          printf("Current thread priority: %d\n", thread_current()->priority);
-        }
-        else if (strcmp(command, "exit") == 0)
-        {
-          printf("Exiting Interactive Shell...\n");
-          interactive = false;
           break;
         }
-        else if (strcmp(command, "shutdown") == 0)
+        else if (key == 127 && i > 0)
         {
-          printf("Shutting down...\n");
-          shutdown();
-          thread_exit();
+          i--;
+          printf("\b \b");
         }
-        else if (strlen(command) > 0)
+        else if (key >= 32 && key <= 126)
         {
-          printf("Unknown command: '%s'\n", command);
-          printf("Type 'help' for available commands.\n");
+          command[i++] = key;
+          printf("%c", key);
         }
+      }
+      if (strcmp(command, "help") == 0)
+      {
+        printf("Available commands:\n");
+        printf("  help     - Show this help\n");
+        printf("  shutdown - Exit Pintos\n");
+      }
+      else if (strcmp(command, "whoami") == 0)
+      {
+        printf("Hi! Tharaka 278M is the last digits\n");
+      }
+      else if (strcmp(command, "time") == 0)
+      {
+        printf("Current time: %ld seconds since the Epoch\n", rtc_get_time());
+      }
+      else if (strcmp(command, "ram") == 0)
+      {
+        printf("Total RAM: %u kB\n", init_ram_pages * PGSIZE / 1024);
+      }
+      else if (strcmp(command, "thread") == 0)
+      {
+        printf("Current thread: %s (tid=%d)\n", thread_current()->name, thread_current()->tid);
+      }
+      else if (strcmp(command, "priority") == 0)
+      {
+        printf("Current thread priority: %d\n", thread_current()->priority);
+      }
+      else if (strcmp(command, "exit") == 0)
+      {
+        printf("Exiting Interactive Shell...\n");
+        interactive = false;
+        break;
+      }
+      else if (strcmp(command, "shutdown") == 0)
+      {
+        printf("Shutting down...\n");
+        shutdown();
+        thread_exit();
+      }
+      else if (strlen(command) > 0)
+      {
+        printf("Unknown command: '%s'\n", command);
+        printf("Type 'help' for available commands.\n");
       }
     }
   }
