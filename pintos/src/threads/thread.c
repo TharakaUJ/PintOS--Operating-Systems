@@ -471,7 +471,6 @@ init_thread (struct thread *t, const char *name, int priority)
 
   #ifdef USERPROG
   t->exit_code = -1;
-  sema_init (&t->sema_load, 0);
   t->load_ok = false;
   #endif
 }

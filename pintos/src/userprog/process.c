@@ -18,6 +18,15 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 
+
+/* Context for process loading - shared between parent and child */
+struct process_load_context
+{
+  struct semaphore completion_signal;  /* Signals when load finishes */
+  bool did_load_succeed;               /* Load result */
+  struct lock context_lock;            /* Protects this structure */
+};
+
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
@@ -25,27 +34,43 @@ static bool load (const char *cmdline, void (**eip) (void), void **esp);
    FILENAME.  The new thread may be scheduled (and may even exit)
    before process_execute() returns.  Returns the new process's
    thread id, or TID_ERROR if the thread cannot be created. */
-// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
 
 tid_t
 process_execute (const char *file_name) 
 {
   char *fn_copy;
   tid_t tid;
-  struct thread *current = thread_current ();
+  struct process_load_context load_ctx;
 
+  /* Initialize load context */
+  sema_init (&load_ctx.completion_signal, 0);
+  load_ctx.did_load_succeed = false;
+  lock_init (&load_ctx.context_lock);
+
+  /* Make a copy of FILE_NAME with context pointer */
   fn_copy = palloc_get_page (0);
   if (fn_copy == NULL)
     return TID_ERROR;
-  strlcpy (fn_copy, file_name, PGSIZE);
+  
+  /* Store both filename and context pointer */
+  struct exec_params
+  {
+    char filename[PGSIZE - sizeof(void*)];
+    struct process_load_context *ctx;
+  };
+  
+  struct exec_params *params = (struct exec_params *) fn_copy;
+  strlcpy (params->filename, file_name, sizeof params->filename);
+  params->ctx = &load_ctx;
 
-  /* Create thread - use only program name, not full command line */
-  char prog_name[128];
+  /* Extract program name for thread naming */
+  char prog_name[16];
   strlcpy (prog_name, file_name, sizeof prog_name);
   char *space = strchr (prog_name, ' ');
-  if (space != NULL)
+  if (space)
     *space = '\0';
 
+  /* Create child thread */
   tid = thread_create (prog_name, PRI_DEFAULT, start_process, fn_copy);
   
   if (tid == TID_ERROR)
@@ -54,11 +79,11 @@ process_execute (const char *file_name)
       return TID_ERROR;
     }
 
-  /* Wait for child to finish loading */
-  sema_down (&current->sema_load);
+  /* Wait for child to complete loading */
+  sema_down (&load_ctx.completion_signal);
   
-  /* Check if load was successful */
-  if (!current->load_ok)
+  /* Check load result */
+  if (!load_ctx.did_load_succeed)
     return TID_ERROR;
     
   return tid;
@@ -66,35 +91,51 @@ process_execute (const char *file_name)
 
 /* A thread function that loads a user process and starts it
    running. */
-// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
 
 static void
-start_process (void *file_name_)
+start_process (void *params_)
 {
-  char *file_name = file_name_;
+  struct exec_params
+  {
+    char filename[PGSIZE - sizeof(void*)];
+    struct process_load_context *ctx;
+  };
+  
+  struct exec_params *params = params_;
+  struct process_load_context *ctx = params->ctx;
+  char *file_name = params->filename;
+  
   struct intr_frame if_;
   bool success;
 
+  /* Initialize interrupt frame */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
   
+  /* Load the executable */
   success = load (file_name, &if_.eip, &if_.esp);
 
-  palloc_free_page (file_name);
+  /* Update shared context with result */
+  lock_acquire (&ctx->context_lock);
+  ctx->did_load_succeed = success;
+  lock_release (&ctx->context_lock);
   
-  /* Signal parent about load result */
-  struct thread *parent = thread_current ();
-  parent->load_ok = success;
-  sema_up (&parent->sema_load);
+  /* Signal parent that loading is complete */
+  sema_up (&ctx->completion_signal);
+  
+  /* Free the parameter page */
+  palloc_free_page (params);
 
+  /* Exit if load failed */
   if (!success)
     {
       thread_current ()->exit_code = -1;
       thread_exit ();
     }
 
+  /* Jump to user mode */
   asm volatile ("movl %0, %%esp; jmp intr_exit" : : "g" (&if_) : "memory");
   NOT_REACHED ();
 }
@@ -115,7 +156,6 @@ process_wait (tid_t child_tid UNUSED)
 }
 
 /* Free the current process's resources. */
-// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
 
 void
 process_exit (void)
@@ -446,7 +486,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
 /* Create a minimal stack by mapping a zeroed page at the top of
    user virtual memory. */
-// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
 
 static bool
 setup_stack (void **esp) 

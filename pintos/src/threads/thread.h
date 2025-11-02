@@ -101,7 +101,6 @@ struct thread
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
     int exit_code;                      /* Process exit code */
-    struct semaphore sema_load;         /* For parent-child load sync */
     bool load_ok;                       /* Whether the process loaded successfully */
 #endif
 
