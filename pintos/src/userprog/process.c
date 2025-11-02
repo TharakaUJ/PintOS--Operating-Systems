@@ -25,28 +25,49 @@ static bool load (const char *cmdline, void (**eip) (void), void **esp);
    FILENAME.  The new thread may be scheduled (and may even exit)
    before process_execute() returns.  Returns the new process's
    thread id, or TID_ERROR if the thread cannot be created. */
+// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
+
 tid_t
 process_execute (const char *file_name) 
 {
   char *fn_copy;
   tid_t tid;
+  struct thread *current = thread_current ();
 
-  /* Make a copy of FILE_NAME.
-     Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page (0);
   if (fn_copy == NULL)
     return TID_ERROR;
   strlcpy (fn_copy, file_name, PGSIZE);
 
-  /* Create a new thread to execute FILE_NAME. */
-  tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
+  /* Create thread - use only program name, not full command line */
+  char prog_name[128];
+  strlcpy (prog_name, file_name, sizeof prog_name);
+  char *space = strchr (prog_name, ' ');
+  if (space != NULL)
+    *space = '\0';
+
+  tid = thread_create (prog_name, PRI_DEFAULT, start_process, fn_copy);
+  
   if (tid == TID_ERROR)
-    palloc_free_page (fn_copy); 
+    {
+      palloc_free_page (fn_copy);
+      return TID_ERROR;
+    }
+
+  /* Wait for child to finish loading */
+  sema_down (&current->sema_load);
+  
+  /* Check if load was successful */
+  if (!current->load_ok)
+    return TID_ERROR;
+    
   return tid;
 }
 
 /* A thread function that loads a user process and starts it
    running. */
+// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
+
 static void
 start_process (void *file_name_)
 {
@@ -54,24 +75,26 @@ start_process (void *file_name_)
   struct intr_frame if_;
   bool success;
 
-  /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
+  
   success = load (file_name, &if_.eip, &if_.esp);
 
-  /* If load failed, quit. */
   palloc_free_page (file_name);
-  if (!success) 
-    thread_exit ();
+  
+  /* Signal parent about load result */
+  struct thread *parent = thread_current ();
+  parent->load_ok = success;
+  sema_up (&parent->sema_load);
 
-  /* Start the user process by simulating a return from an
-     interrupt, implemented by intr_exit (in
-     threads/intr-stubs.S).  Because intr_exit takes all of its
-     arguments on the stack in the form of a `struct intr_frame',
-     we just point the stack pointer (%esp) to our stack frame
-     and jump to it. */
+  if (!success)
+    {
+      thread_current ()->exit_code = -1;
+      thread_exit ();
+    }
+
   asm volatile ("movl %0, %%esp; jmp intr_exit" : : "g" (&if_) : "memory");
   NOT_REACHED ();
 }
@@ -92,24 +115,21 @@ process_wait (tid_t child_tid UNUSED)
 }
 
 /* Free the current process's resources. */
+// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
+
 void
 process_exit (void)
 {
   struct thread *cur = thread_current ();
   uint32_t *pd;
 
-  /* Destroy the current process's page directory and switch back
-     to the kernel-only page directory. */
+  /* Print termination message for user processes */
+  if (cur->pagedir != NULL)
+    printf ("%s: exit(%d)\n", cur->name, cur->exit_code);
+
   pd = cur->pagedir;
   if (pd != NULL) 
     {
-      /* Correct ordering here is crucial.  We must set
-         cur->pagedir to NULL before switching page directories,
-         so that a timer interrupt can't switch back to the
-         process page directory.  We must activate the base page
-         directory before destroying the process's page
-         directory, or our active page directory will be one
-         that's been freed (and cleared). */
       cur->pagedir = NULL;
       pagedir_activate (NULL);
       pagedir_destroy (pd);
@@ -426,6 +446,8 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
 /* Create a minimal stack by mapping a zeroed page at the top of
    user virtual memory. */
+// filepath: /home/tharaka/Sem3/OS/pintos/pintos/src/userprog/process.c
+
 static bool
 setup_stack (void **esp) 
 {
@@ -437,7 +459,13 @@ setup_stack (void **esp)
     {
       success = install_page (((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
       if (success)
-        *esp = PHYS_BASE;
+        {
+          *esp = PHYS_BASE;
+          
+          /* Push fake return address (0) */
+          *esp -= sizeof (void *);
+          *((void **)*esp) = NULL;
+        }
       else
         palloc_free_page (kpage);
     }
