@@ -17,18 +17,19 @@
 #include "threads/palloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "threads/synch.h"
 
-
-/* Context for process loading - shared between parent and child */
-struct process_load_context
+/* Structure passed to start_process for synchronization */
+struct process_info
 {
-  struct semaphore completion_signal;  /* Signals when load finishes */
-  bool did_load_succeed;               /* Load result */
-  struct lock context_lock;            /* Protects this structure */
+  const char *cmdline;           /* Command line string */
+  struct semaphore sema;         /* Semaphore for parent-child sync */
+  bool *load_success;            /* Pointer to parent's success flag */
 };
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
+static bool setup_stack (const char *cmdline, void **esp);
 
 /* Starts a new thread running a user program loaded from
    FILENAME.  The new thread may be scheduled (and may even exit)
@@ -40,38 +41,32 @@ process_execute (const char *file_name)
 {
   char *fn_copy;
   tid_t tid;
-  struct process_load_context load_ctx;
-
-  /* Initialize load context */
-  sema_init (&load_ctx.completion_signal, 0);
-  load_ctx.did_load_succeed = false;
-  lock_init (&load_ctx.context_lock);
-
-  /* Make a copy of FILE_NAME with context pointer */
+  bool load_success = false;
+  struct semaphore load_sema;
+  
+  /* Initialize synchronization */
+  sema_init (&load_sema, 0);
+  
+  /* Make a copy of FILE_NAME */
   fn_copy = palloc_get_page (0);
   if (fn_copy == NULL)
     return TID_ERROR;
-  
-  /* Store both filename and context pointer */
-  struct exec_params
-  {
-    char filename[PGSIZE - sizeof(void*)];
-    struct process_load_context *ctx;
-  };
-  
-  struct exec_params *params = (struct exec_params *) fn_copy;
-  strlcpy (params->filename, file_name, sizeof params->filename);
-  params->ctx = &load_ctx;
+  strlcpy (fn_copy, file_name, PGSIZE);
 
-  /* Extract program name for thread naming */
+  /* Create process_info structure */
+  struct process_info info;
+  info.cmdline = fn_copy;
+  sema_init (&info.sema, 0);
+  info.load_success = &load_success;
+
+  /* Extract program name (before first space) for thread name */
   char prog_name[16];
   strlcpy (prog_name, file_name, sizeof prog_name);
-  char *space = strchr (prog_name, ' ');
-  if (space)
-    *space = '\0';
+  char *save_ptr;
+  strtok_r (prog_name, " ", &save_ptr);
 
   /* Create child thread */
-  tid = thread_create (prog_name, PRI_DEFAULT, start_process, fn_copy);
+  tid = thread_create (prog_name, PRI_DEFAULT, start_process, &info);
   
   if (tid == TID_ERROR)
     {
@@ -79,11 +74,12 @@ process_execute (const char *file_name)
       return TID_ERROR;
     }
 
-  /* Wait for child to complete loading */
-  sema_down (&load_ctx.completion_signal);
+  /* Wait for child to finish loading */
+  sema_down (&info.sema);
+  palloc_free_page (fn_copy);
   
-  /* Check load result */
-  if (!load_ctx.did_load_succeed)
+  /* Return TID_ERROR if load failed */
+  if (!load_success)
     return TID_ERROR;
     
   return tid;
@@ -93,49 +89,36 @@ process_execute (const char *file_name)
    running. */
 
 static void
-start_process (void *params_)
+start_process (void *info_)
 {
-  struct exec_params
-  {
-    char filename[PGSIZE - sizeof(void*)];
-    struct process_load_context *ctx;
-  };
-  
-  struct exec_params *params = params_;
-  struct process_load_context *ctx = params->ctx;
-  char *file_name = params->filename;
-  
+  struct process_info *info = info_;
   struct intr_frame if_;
   bool success;
 
-  /* Initialize interrupt frame */
+  /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
-  
-  /* Load the executable */
-  success = load (file_name, &if_.eip, &if_.esp);
+  success = load (info->cmdline, &if_.eip, &if_.esp);
 
-  /* Update shared context with result */
-  lock_acquire (&ctx->context_lock);
-  ctx->did_load_succeed = success;
-  lock_release (&ctx->context_lock);
-  
-  /* Signal parent that loading is complete */
-  sema_up (&ctx->completion_signal);
-  
-  /* Free the parameter page */
-  palloc_free_page (params);
+  /* Store load result and signal parent */
+  *(info->load_success) = success;
+  sema_up (&info->sema);
 
-  /* Exit if load failed */
+  /* If load failed, quit. */
   if (!success)
     {
       thread_current ()->exit_code = -1;
       thread_exit ();
     }
 
-  /* Jump to user mode */
+  /* Start the user process by simulating a return from an
+     interrupt, implemented by intr_exit (in
+     threads/intr-stubs.S).  Because intr_exit takes all of its
+     arguments on the stack in the form of a `struct intr_frame',
+     we just point the stack pointer (%esp) to our stack frame
+     and jump to it. */
   asm volatile ("movl %0, %%esp; jmp intr_exit" : : "g" (&if_) : "memory");
   NOT_REACHED ();
 }
@@ -255,7 +238,6 @@ struct Elf32_Phdr
 #define PF_W 2          /* Writable. */
 #define PF_R 4          /* Readable. */
 
-static bool setup_stack (void **esp);
 static bool validate_segment (const struct Elf32_Phdr *, struct file *);
 static bool load_segment (struct file *file, off_t ofs, uint8_t *upage,
                           uint32_t read_bytes, uint32_t zero_bytes,
@@ -362,7 +344,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
     }
 
   /* Set up stack. */
-  if (!setup_stack (esp))
+  if (!setup_stack (file_name, esp))
     goto done;
 
   /* Start address. */
@@ -487,8 +469,10 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 /* Create a minimal stack by mapping a zeroed page at the top of
    user virtual memory. */
 
+/* Sets up the CPU for running user code in the current thread.
+   This function is called on every context switch. */
 static bool
-setup_stack (void **esp) 
+setup_stack (const char *cmdline, void **esp) 
 {
   uint8_t *kpage;
   bool success = false;
@@ -501,9 +485,76 @@ setup_stack (void **esp)
         {
           *esp = PHYS_BASE;
           
-          /* Push fake return address (0) */
+          /* Parse arguments */
+          char *token, *save_ptr;
+          char *cmdline_copy = palloc_get_page (0);
+          if (cmdline_copy == NULL)
+            {
+              palloc_free_page (kpage);
+              return false;
+            }
+          strlcpy (cmdline_copy, cmdline, PGSIZE);
+          
+          /* Count arguments */
+          int argc = 0;
+          for (token = strtok_r (cmdline_copy, " ", &save_ptr); token != NULL;
+               token = strtok_r (NULL, " ", &save_ptr))
+            argc++;
+          
+          /* Allocate space for argument addresses */
+          char **argv = palloc_get_page (0);
+          if (argv == NULL)
+            {
+              palloc_free_page (cmdline_copy);
+              palloc_free_page (kpage);
+              return false;
+            }
+          
+          /* Re-parse and push arguments onto stack */
+          strlcpy (cmdline_copy, cmdline, PGSIZE);
+          int i = 0;
+          for (token = strtok_r (cmdline_copy, " ", &save_ptr); token != NULL;
+               token = strtok_r (NULL, " ", &save_ptr))
+            {
+              size_t len = strlen (token) + 1;
+              *esp -= len;
+              memcpy (*esp, token, len);
+              argv[i++] = *esp;
+            }
+          
+          /* Word-align stack pointer */
+          while ((uintptr_t) *esp % 4 != 0)
+            {
+              *esp -= 1;
+              *((uint8_t *) *esp) = 0;
+            }
+          
+          /* Push argv[argc] (null sentinel) */
+          *esp -= sizeof (char *);
+          *((char **) *esp) = NULL;
+          
+          /* Push argv pointers in reverse order */
+          for (i = argc - 1; i >= 0; i--)
+            {
+              *esp -= sizeof (char *);
+              *((char **) *esp) = argv[i];
+            }
+          
+          /* Push argv (pointer to argv[0]) */
+          char **argv_ptr = *esp;
+          *esp -= sizeof (char **);
+          *((char ***) *esp) = argv_ptr;
+          
+          /* Push argc */
+          *esp -= sizeof (int);
+          *((int *) *esp) = argc;
+          
+          /* Push fake return address */
           *esp -= sizeof (void *);
-          *((void **)*esp) = NULL;
+          *((void **) *esp) = NULL;
+          
+          palloc_free_page (cmdline_copy);
+          palloc_free_page (argv);
         }
       else
         palloc_free_page (kpage);
