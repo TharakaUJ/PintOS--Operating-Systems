@@ -3,9 +3,9 @@
 #include <inttypes.h>
 #include <round.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "userprog/gdt.h"
+#include "threads/malloc.h"
 #include "userprog/pagedir.h"
 #include "userprog/tss.h"
 #include "filesys/directory.h"
@@ -19,12 +19,22 @@
 #include "threads/vaddr.h"
 #include "threads/synch.h"
 
+/* Child process structure for wait */
+struct child_process
+{
+  tid_t tid;
+  int exit_code;
+  bool exited;
+  struct list_elem elem;
+};
+
 /* Structure passed to start_process for synchronization */
 struct process_info
 {
   const char *cmdline;           /* Command line string */
   struct semaphore sema;         /* Semaphore for parent-child sync */
   bool *load_success;            /* Pointer to parent's success flag */
+  tid_t tid;                     /* Thread ID of child */
 };
 
 static thread_func start_process NO_RETURN;
@@ -58,6 +68,7 @@ process_execute (const char *file_name)
   info.cmdline = fn_copy;
   sema_init (&info.sema, 0);
   info.load_success = &load_success;
+  info.tid = TID_ERROR;
 
   /* Extract program name (before first space) for thread name */
   char prog_name[16];
@@ -67,6 +78,7 @@ process_execute (const char *file_name)
 
   /* Create child thread */
   tid = thread_create (prog_name, PRI_DEFAULT, start_process, &info);
+  info.tid = tid;
   
   if (tid == TID_ERROR)
     {
@@ -81,6 +93,16 @@ process_execute (const char *file_name)
   /* Return TID_ERROR if load failed */
   if (!load_success)
     return TID_ERROR;
+  
+  /* Add child to parent's children list */
+  struct child_process *child = malloc (sizeof (struct child_process));
+  if (child != NULL)
+    {
+      child->tid = tid;
+      child->exit_code = -1;
+      child->exited = false;
+      list_push_back (&thread_current ()->children, &child->elem);
+    }
     
   return tid;
 }
@@ -94,6 +116,9 @@ start_process (void *info_)
   struct process_info *info = info_;
   struct intr_frame if_;
   bool success;
+
+  /* Set parent TID */
+  thread_current ()->parent_tid = thread_current ()->tid;
 
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
@@ -133,9 +158,43 @@ start_process (void *info_)
    This function will be implemented in problem 2-2.  For now, it
    does nothing. */
 int
-process_wait (tid_t child_tid UNUSED) 
+process_wait (tid_t child_tid) 
 {
-  return -1;
+  struct thread *cur = thread_current ();
+  struct list_elem *e;
+  struct child_process *child = NULL;
+  
+  /* Find child in children list */
+  for (e = list_begin (&cur->children); e != list_end (&cur->children);
+       e = list_next (e))
+    {
+      struct child_process *c = list_entry (e, struct child_process, elem);
+      if (c->tid == child_tid)
+        {
+          child = c;
+          break;
+        }
+    }
+  
+  /* Child not found or already waited on */
+  if (child == NULL)
+    return -1;
+  
+  /* Wait for child to exit if it hasn't yet */
+  if (!child->exited)
+    {
+      /* Find the child thread and wait on its semaphore */
+      struct thread *t = thread_get_by_tid (child_tid);
+      if (t != NULL)
+        sema_down (&t->wait_sema);
+    }
+  
+  /* Get exit code and remove from children list */
+  int exit_code = child->exit_code;
+  list_remove (&child->elem);
+  free (child);
+  
+  return exit_code;
 }
 
 /* Free the current process's resources. */
@@ -149,6 +208,45 @@ process_exit (void)
   /* Print termination message for user processes */
   if (cur->pagedir != NULL)
     printf ("%s: exit(%d)\n", cur->name, cur->exit_code);
+
+  /* Update parent's child list with exit code */
+  struct thread *parent = thread_get_by_tid (cur->parent_tid);
+  if (parent != NULL)
+    {
+      struct list_elem *e;
+      for (e = list_begin (&parent->children); e != list_end (&parent->children);
+           e = list_next (e))
+        {
+          struct child_process *child = list_entry (e, struct child_process, elem);
+          if (child->tid == cur->tid)
+            {
+              child->exit_code = cur->exit_code;
+              child->exited = true;
+              break;
+            }
+        }
+    }
+  
+  /* Signal parent that we're done */
+  sema_up (&cur->wait_sema);
+  
+  /* Close all open files */
+  int i;
+  for (i = 2; i < 128; i++)
+    {
+      if (cur->files[i] != NULL)
+        {
+          file_close (cur->files[i]);
+          cur->files[i] = NULL;
+        }
+    }
+
+  /* Close executable file and re-enable writes */
+  if (cur->executable != NULL)
+    {
+      file_close (cur->executable);
+      cur->executable = NULL;
+    }
 
   pd = cur->pagedir;
   if (pd != NULL) 
@@ -256,6 +354,9 @@ load (const char *file_name, void (**eip) (void), void **esp)
   off_t file_ofs;
   bool success = false;
   int i;
+  char *prog_name = NULL;
+  char *save_ptr;
+  char *name_only;
 
   /* Allocate and activate page directory. */
   t->pagedir = pagedir_create ();
@@ -263,8 +364,19 @@ load (const char *file_name, void (**eip) (void), void **esp)
     goto done;
   process_activate ();
 
+  /* Extract program name (before first space) */
+  prog_name = palloc_get_page (0);
+  if (prog_name == NULL)
+    goto done;
+  strlcpy (prog_name, file_name, PGSIZE);
+  name_only = strtok_r (prog_name, " ", &save_ptr);
+  
+  /* If strtok_r returns NULL, file_name was empty or all spaces */
+  if (name_only == NULL)
+    goto done;
+
   /* Open executable file. */
-  file = filesys_open (file_name);
+  file = filesys_open (name_only);
   if (file == NULL) 
     {
       printf ("load: %s: open failed\n", file_name);
@@ -354,7 +466,20 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
  done:
   /* We arrive here whether the load is successful or not. */
-  file_close (file);
+  if (prog_name != NULL)
+    palloc_free_page (prog_name);
+    
+  if (success)
+    {
+      /* Deny writes to executable */
+      file_deny_write (file);
+      thread_current ()->executable = file;
+    }
+  else
+    {
+      file_close (file);
+    }
+    
   return success;
 }
 

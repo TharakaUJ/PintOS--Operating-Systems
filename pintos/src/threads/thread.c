@@ -275,6 +275,22 @@ thread_tid (void)
   return thread_current ()->tid;
 }
 
+/* Finds and returns a thread with the given TID, or NULL if not found. */
+struct thread *
+thread_get_by_tid (tid_t tid)
+{
+  struct list_elem *e;
+
+  for (e = list_begin (&all_list); e != list_end (&all_list);
+       e = list_next (e))
+    {
+      struct thread *t = list_entry (e, struct thread, allelem);
+      if (t->tid == tid)
+        return t;
+    }
+  return NULL;
+}
+
 /* Deschedules the current thread and destroys it.  Never
    returns to the caller. */
 void
@@ -472,6 +488,15 @@ init_thread (struct thread *t, const char *name, int priority)
   #ifdef USERPROG
   t->exit_code = -1;
   t->load_ok = false;
+  t->executable = NULL;
+  list_init (&t->children);
+  sema_init (&t->wait_sema, 0);
+  t->parent_tid = TID_ERROR;
+  t->waited_on = false;
+  t->next_fd = 2;  /* 0 and 1 are reserved for stdin/stdout */
+  int i;
+  for (i = 0; i < 128; i++)
+    t->files[i] = NULL;
   #endif
 }
 
